@@ -29,7 +29,5 @@
 
 
 ## 其他npm包
-
 * axios		调用webapi
-
 * signals(@types/signals)	事件订阅/通知    

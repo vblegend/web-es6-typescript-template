@@ -31,6 +31,6 @@
     "debug": "concurrently \"npm run build\" \"npm run httpserver-nocache\"",
     "debug-cache": "concurrently \"npm run build\" \"npm run httpserver\""
   },
-  "author": "",
+  "author": "Hanks",
   "license": "ISC"
 }
