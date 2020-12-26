@@ -11,7 +11,6 @@ export class Application {
         
     }
 
-
     public output(text: string): void {
         console.log(text);
         console.log('text');
