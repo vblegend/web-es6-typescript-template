@@ -7,7 +7,7 @@
             "name": "Chrome Debug",
             "port": 9522,
             "webRoot": "${workspaceFolder}",
-            "url":"http://localhost:9527",
+            "url":"http://localhost:8000",
             "sourceMaps": true,
         }
     ]

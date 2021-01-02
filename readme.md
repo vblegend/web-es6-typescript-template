@@ -18,7 +18,7 @@
 ---
 
 ## 默认配置
-* 默认web端口9527,修改端口需修改`webpack.dev`+`.vscode/launch.json`文件
+* 默认web端口8000,修改端口需修改`webpack.dev.js`+`.vscode/launch.json`文件
 
 
 ## npm包
