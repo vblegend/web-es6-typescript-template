@@ -36,7 +36,7 @@
     // 将严格校验switch-case语法
     "noFallthroughCasesInSwitch": true,
     // 严格null检查模式，null和undefined值不包含在任何类型里
-    "strictNullChecks": true,
+    "strictNullChecks": false,
     // 保存上一次的编译信息，下一次进行增量更新
     "incremental": false,
     // 不生成定义文件d.ts
