@@ -1,0 +1,25 @@
+div {
+    font-family: Helvetica, Arial, sans-serif;
+    font-size: 14px;
+    margin: 0;
+    overflow: hidden;
+}
+
+hr {
+    border: 0;
+    border-top: 1px solid #4b4b4b;
+}
+
+::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
+}
+
+::-webkit-scrollbar-thumb {
+    background: #646464;
+    cursor: pointer;
+}
+
+::-webkit-scrollbar-track {
+    background: #2f2f2f;
+}

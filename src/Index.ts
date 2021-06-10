@@ -7,6 +7,7 @@
  */
 export class Application {
 
+    // eslint-disable-next-line no-useless-constructor
     public constructor() {
         
     }
@@ -14,10 +15,6 @@ export class Application {
     public output(text: string): void {
         console.log(text);
         console.log('text');
-        let c = 123;
     }
 
-    private vvvv(){
-
-    }
 }

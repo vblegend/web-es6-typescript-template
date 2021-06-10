@@ -1,4 +1,7 @@
 import { Application } from '../src/Index';
+import './assets/css/main.scss';
+
+
 
 /**
  * this is example
@@ -12,14 +15,6 @@ export class Examples {
         app.output('Hello Wrold!');
 
     }
-
-    public FGFFFF() {
-
-        return '12312312'
-            ;
-    }
-
-
 }
 
 
