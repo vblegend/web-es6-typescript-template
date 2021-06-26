@@ -7,7 +7,7 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
 const ProgressBarPlugin = require('progress-bar-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin'); // 抽离css的插件
-
+const TsConfigPathsPlugin = require('tsconfig-paths-webpack-plugin');
 // const { WebpackManifestPlugin } = require('webpack-manifest-plugin');
 // const HappyPack = require('happypack');
 
@@ -17,31 +17,37 @@ const MiniCssExtractPlugin = require('mini-css-extract-plugin'); // 抽离css的
 
 module.exports = {
     entry: {
-        examples: './examples/index.ts'
+        index: './src/Index.ts'
     },
     module: {
         rules: [{
             test: /\.ts?$/,
             exclude: /node_modules/,
             use: [{
-                    loader: 'cache-loader'
-                },
-                {
-                    loader: 'thread-loader',
-                    options: {
-                        // there should be 1 cpu for the fork-ts-checker-webpack-plugin
-                        // eslint-disable-next-line global-require
-                        workers: require('os').cpus().length - 1
-                    }
-                },
-                {
-                    loader: 'ts-loader',
-                    options: {
-                        // IMPORTANT! use happyPackMode mode to speed-up compilation and reduce errors reported to webpack
-                        happyPackMode: true
-                    }
+                loader: 'cache-loader'
+            },
+            {
+                loader: 'thread-loader',
+                options: {
+                    // there should be 1 cpu for the fork-ts-checker-webpack-plugin
+                    // eslint-disable-next-line global-require
+                    workers: require('os').cpus().length - 1
                 }
+            },
+            {
+                loader: 'ts-loader',
+                options: {
+                    // IMPORTANT! use happyPackMode mode to speed-up compilation and reduce errors reported to webpack
+                    happyPackMode: true
+                }
+            }
             ]
+        }, {
+            test: /\.(ttf|eot|svg|woff|woff2)$/,
+            exclude: /node_module/,
+            use: [{
+                loader: 'url-loader'
+            }]
         }, {
             test: /\.js$/,
             exclude: /node_module/,
@@ -69,11 +75,11 @@ module.exports = {
             test: /\.css$/,
             exclude: /node_modules/,
             use: [{
-                    loader: 'style-loader'
-                },
-                {
-                    loader: 'css-loader'
-                }
+                loader: 'style-loader'
+            },
+            {
+                loader: 'css-loader'
+            }
             ]
         }]
         // 精准过滤不需要解析的文件
@@ -82,6 +88,7 @@ module.exports = {
         // }
     },
     resolve: {
+        plugins: [new TsConfigPathsPlugin({/* options: see below */ })],
         extensions: ['.tsx', '.ts', '.js'],
         // 增加fallback配置是为了解决 jszip与webpack 兼容问题
         fallback: {
@@ -98,6 +105,7 @@ module.exports = {
 
     },
     plugins: [
+
         new MiniCssExtractPlugin({
             filename: 'assets/css/main.css'
         }),
@@ -108,8 +116,8 @@ module.exports = {
         new ProgressBarPlugin(),
         // Index.html 模板化
         new HtmlWebpackPlugin({
-            template: './examples/templates/template.index.html',
-            chunks: ['vendors', 'common', 'examples'],
+            template: './templates/template.index.html',
+            chunks: ['vendors', 'common', 'index'],
             filename: 'index.html',
             minify: {
                 collapseWhitespace: false
@@ -118,19 +126,12 @@ module.exports = {
         }),
         new CopyWebpackPlugin({
             patterns: [{
-                    from: path.resolve(__dirname, '../src/assets'),
-                    to: path.resolve(__dirname, '../dist/assets'),
-                    globOptions: {
-                        ignore: ['**/*.scss']
-                    }
-                },
-                {
-                    from: path.resolve(__dirname, '../examples/assets'),
-                    to: path.resolve(__dirname, '../dist/assets'),
-                    globOptions: {
-                        ignore: ['**/*.scss']
-                    }
+                from: path.resolve(__dirname, '../src/assets'),
+                to: path.resolve(__dirname, '../dist/assets'),
+                globOptions: {
+                    ignore: ['**/*.scss', '**/*.js']
                 }
+            }
             ]
         })
     ],

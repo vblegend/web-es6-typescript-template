@@ -1,10 +1,14 @@
 {
   "compileOnSave": true,
   "compilerOptions": {
-    "lib": ["es5", "es6", "es2017", "dom"],
+    "lib": [
+      "es5",
+      "es6",
+      "es2017",
+      "dom"
+    ],
     "target": "es6",
     "module": "commonjs",
-
     // 允许编译javascript文件
     "allowJs": true,
     // 报告.js文件中的错误。与allowJs一起使用
@@ -42,29 +46,40 @@
     // 不生成定义文件d.ts
     "declaration": false,
     // 生成.map文件
-    "sourceMap": false,
+    "sourceMap": true,
     // 跳过默认库检查
     "skipLibCheck": true,
     // 输出文件的根目录
     "outDir": "./dist",
     // 模块的解析策略
-    // "moduleResolution": "node",
-    // "noImplicitAny": false,
-    // "removeComments": true,
-    // "sourceMap": true,
-    // "outDir": "./dist/",
-    // "resolveJsonModule": true,
-    // "allowJs": true,
-    // "declaration": false,
-    // "emitDecoratorMetadata": true,
-    // "experimentalDecorators": true,
-    // "baseUrl": "./",
-    // "paths": {
-    //   "@src/*": ["src/*"]
-    // }
+    "moduleResolution": "node",
+    "resolveJsonModule": true,
+    // 根路径
+    "baseUrl": "./",
+    "typeRoots": [
+      "node_modules/@types",
+      "src/@types"
+    ],
+    // 定义相对路径
+    "paths": {
+      "@src/*": [
+        "src/*"
+      ],
+      "@assets/*": [
+        "src/assets/*"
+      ],
+      "@app/*": [
+        "src/app/*"
+      ]
+    }
+  },
+  "awesomeTypescriptLoaderOptions": {
+    "useBabel": true,
+    "useCache": true
   },
   "exclude": [
     "node_modules",
-    "dist/*"
+    "dist/*",
+    "src/@types"
   ]
 }

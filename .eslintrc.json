@@ -51,7 +51,7 @@
           "error",
           "property"
       ],
-      "dot-notation": "error",
+      "dot-notation": "off",
       "eol-last": "off",
       "eqeqeq": "off",
       "func-names": "off",
@@ -100,7 +100,7 @@
               "allowIndirect": true
           }
       ],
-      "no-extend-native": "error",
+      "no-extend-native": "off",
       "no-extra-bind": "error",
       "no-extra-label": "error",
       "no-extra-parens": "off",
@@ -180,10 +180,10 @@
       "no-useless-call": "off",
       "no-useless-computed-key": "error",
       "no-useless-concat": "off",
-      "no-useless-constructor": "warn",
+      "no-useless-constructor": "off",
       "no-useless-escape": "off",
       "no-useless-rename": "error",
-      "no-var": "error",
+      "no-var": "off",
       "no-void": "off",
       "no-warning-comments": "off",
       "no-whitespace-before-property": "error",
